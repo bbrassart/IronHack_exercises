@@ -1,5 +1,5 @@
-require_relative 'robotcontender.rb'
-require_relative 'referee.rb'
-require_relative 'robocage.rb'
+require_relative 'lib/Robotcontender.rb'
+require_relative 'lib/Referee.rb'
+require_relative 'lib/Robocage.rb'
 
 RoboCage.new([RoboContender.new("Robocop"), RoboContender.new("Terminator")]).introduction

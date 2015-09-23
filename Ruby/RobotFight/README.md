@@ -6,7 +6,7 @@ Ruby Version: 2.2.2
 To run it, do :
 - Clone the repo or copy the files
 - Bundle install
-- You can run the tests by typing 'rspec spec_main.rb' when you're in the 'lib'
+- You can run the tests by typing 'rspec spec_main.rb'
 - To play, run the 'main.rb' script
 
 

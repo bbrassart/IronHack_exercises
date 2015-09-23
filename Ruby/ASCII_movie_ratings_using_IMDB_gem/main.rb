@@ -1,5 +1,5 @@
 require 'imdb'
-require './lib/Gather.rb'
-require './lib/Display.rb'
+require_relative 'lib/Gather.rb'
+require_relative 'lib/Display.rb'
 
 Gather.new().gather_movies()

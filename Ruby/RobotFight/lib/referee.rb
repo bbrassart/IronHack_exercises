@@ -1,5 +1,6 @@
 class Referee
   attr_accessor :moves, :decision
+
   def initialize
     @decision = 0
     @moves = {:poor => 5, :weak => 10, :strong => 20, :definitive => 50}
@@ -9,8 +10,6 @@ class Referee
     weak_attack_null(robot1_move, robot2_move)
     strong_double(robot1_move, robot2_move)
     definitive_double(robot1_move, robot2_move)
-  end
-
   end
 
   def weak_attack_null(robot1_move, robot2_move)
