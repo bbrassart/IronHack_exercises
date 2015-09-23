@@ -1,8 +1,5 @@
-require 'io/console'
-require_relative 'rook.rb'
-require_relative 'pawn.rb'
-
 class Translator
+  attr_accessor :moves_to_be_checked
   def initialize(moves_to_be_checked, board)
     @moves_to_be_checked = moves_to_be_checked
     @board = board

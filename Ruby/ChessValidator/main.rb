@@ -1,8 +1,7 @@
-require_relative 'rook.rb'
-require_relative 'pawn.rb'
-require_relative 'piece.rb'
-require_relative 'translator'
-require 'io/console'
+require_relative 'lib/Rook.rb'
+require_relative 'lib/Pawn.rb'
+require_relative 'lib/Piece.rb'
+require_relative 'lib/Translator.rb'
 
 board = [
   [:bR, :bN, :bB, :bQ, :bK, :bB, :bN, :bR],

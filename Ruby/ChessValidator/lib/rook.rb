@@ -1,4 +1,4 @@
-require_relative 'piece.rb'
+require_relative 'Piece.rb'
 
 class Rook < Piece
 	def initialize(origin, destination)
