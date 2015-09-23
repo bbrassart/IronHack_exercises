@@ -10,6 +10,10 @@ RSpec.describe Gather do
     expect(@list.length).to eq(6)
   end
 
+  it "should NOT return the wrong number of movies added to the list" do
+    expect(@list.length).not_to eq(9)
+  end
+
   it "should return the first name of the movies list" do
     expect(@list[0]).to eq("Die Hard")
   end
