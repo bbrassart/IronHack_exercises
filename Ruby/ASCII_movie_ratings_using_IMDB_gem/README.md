@@ -1,14 +1,13 @@
 ASCII IMDB movies
 ======================
 
-No tests implemented yet.
-
 Ruby Version: 2.2.2
 
 To run it, do :
 
 - Clone the repo or copy the files
 - Bundle install
+- To run the tests, enter the 'spec' folder and run 'rspec spec_main.rb'
 - To execute the script, run the 'main.rb' script or build it in your favorite text editor
 
 DESCRIPTION
