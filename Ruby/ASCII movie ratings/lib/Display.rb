@@ -5,14 +5,13 @@ class Display
 	end
 
 	def process
-		puts "Processing your request. This may take a while"
+		puts "Processing your request. This may take a while..."
 		@movies_list.each_with_index do |movie, index|
 			@queries[index] = Imdb::Search.new(movie)
 		end
-		output = ''
+		show_movie_names()
 		display_ratings(@queries)
 		display_numbers_line(@queries)
-		show_movie_names()
 	end
 
 	def display_ratings(results)
@@ -32,8 +31,8 @@ class Display
 			numbers_output +=  "#{index+1}"
 			numbers_output += "|"
 		end
-		numbers_output += "\n"
 		puts numbers_output
+		puts "\n"
 	end
 
 	def show_movie_names
@@ -41,5 +40,6 @@ class Display
 		@movies_list.each_with_index do |movie, index|
 			puts "#{index+1}. #{movie}"
 		end
+		puts "\n"
 	end
 end
