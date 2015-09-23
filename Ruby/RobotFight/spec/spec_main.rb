@@ -10,4 +10,12 @@ RSpec.describe RoboCage do
   it "should return the length of the contenders" do
     expect(@cage.contenders.length).to eq(2)
   end
+
+  it "should return the name of the first robot" do
+    expect(@cage.contenders[0].name).to eq("Robocop")
+  end
+
+  it "should return the life points of the second robot" do
+    expect(@cage.contenders[1].life_points).to eq(200)
+  end
 end
