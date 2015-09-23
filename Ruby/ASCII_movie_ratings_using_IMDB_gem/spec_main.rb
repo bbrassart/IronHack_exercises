@@ -1,5 +1,5 @@
-require_relative '../lib/Gather.rb'
-require_relative '../lib/Display.rb'
+require_relative 'lib/Gather.rb'
+require_relative 'lib/Display.rb'
 
 RSpec.describe Gather do
   before do
