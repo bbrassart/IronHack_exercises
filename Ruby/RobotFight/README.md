@@ -1,4 +1,4 @@
-Robot utlimate fight
+ROBOT ULTIMATE FIGHT
 ======================
 
 Ruby Version: 2.2.2
@@ -10,7 +10,7 @@ To run it, do :
 - To play, run the 'main.rb' script
 
 
-Description
+DESCRIPTION
 ===========
 
 Two robots in a cage, a series of move, one referee, two players.
