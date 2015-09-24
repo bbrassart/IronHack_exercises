@@ -2,13 +2,12 @@ FIZZBUZZ
 ========
 
 FizzBuzz solution using a lambda function.
-No tests implemented yet.
 
 Ruby Version: 2.2.2
 
 To run it, do :
 - Clone the repo or copy the files
-- To run it, execute the 'main.rb' script or build it in your favourite text editor
+- To run it, execute the 'main.rb' script or build it in your favorite text editor
 
 
 DESCRIPTION
