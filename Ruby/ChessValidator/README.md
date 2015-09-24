@@ -1,14 +1,13 @@
 CLASSIC CHESS VALIDATOR
 ======================
 
-No tests implemented yet.
-
 Ruby Version: 2.2.2
 
 To run it, do :
 - Clone the repo or copy the files
 - Bundle install
-- To play it, run the 'main.rb' script or build it in your favourite text editor
+- To run the tests, run 'rspec spec_main.rb'
+- To play it, run the 'main.rb' script or build it in your favorite text editor
 
 
 DESCRIPTION

@@ -1,7 +1,7 @@
-require_relative 'lib/rook.rb'
-require_relative 'lib/pawn.rb'
-require_relative 'lib/piece.rb'
-require_relative 'lib/translator'
+require_relative 'lib/Rook.rb'
+require_relative 'lib/Pawn.rb'
+require_relative 'lib/Piece.rb'
+require_relative 'lib/Translator.rb'
 
 RSpec.describe Translator do
   before do
