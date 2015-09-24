@@ -6,7 +6,6 @@ Ruby Version: 2.2.2
 To run it, do :
 - Clone the repo or copy the files
 - Bundle install
-- To run the test, run 'rspec spec_main.rb'
 - To play it, run the 'main.rb' script or build it in your favourite text editor
 
 

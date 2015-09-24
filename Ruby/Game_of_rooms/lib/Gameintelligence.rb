@@ -1,7 +1,4 @@
 class GameIntelligence
-	#for testing purpose
-	attr_accessor :rooms
-	
 	def initialize(rooms, player)
 		@rooms = rooms
 		@lives = 5
