@@ -2,11 +2,12 @@ StarCraft API
 ================
 
 Ruby Version: 2.2.2
+Rails Version: 4.2.3
 
 To run it, do :
 - Clone the repo or copy the files
 - Bundle install
-- Create the database ('rake db:create') and seed it.
+- Create the database and seed it.
 
 DESCRIPTION
 =====================
