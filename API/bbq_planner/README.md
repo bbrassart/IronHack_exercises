@@ -2,6 +2,7 @@ Barbecue Planner API
 ================
 
 Ruby Version: 2.2.2
+
 Rails Version: 4.2.3
 
 To run it, do :
