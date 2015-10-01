@@ -1,0 +1,32 @@
+    <head>
+    <style>
+    body {background-color:lightblue}
+    </style>
+        <title>Shouter</title>
+    </head>
+    <body>
+    <h1>Sign up to Shout for free!</h1>
+    <p>Your password must be at least 5 characters long</p>
+    <form action="/signup" method="POST">
+        <p>Full name:<p>
+        <input name="name" type="text" />
+        <p>Handle:<p>
+        <input name="handle" type="text" />
+        <p>Password:</p>
+        <input name="password" type="text" />
+        <input type="submit" value="Sign up!">
+    </form>
+    <p>Already have an account? </p>
+        <form action="/">
+    <input type="submit" value="Back to home">
+</form>
+
+    <h2>We are actually <%= User.all.count %> users. Awesome!</h2>
+    <ul>
+    <% Shout.all.each do |shout|  %>
+    <li> "<%= shout.message %>" by @<%= shout.user.handle %> </li>
+    <% end %>
+   
+ </body>
+</html>
+</form> 
