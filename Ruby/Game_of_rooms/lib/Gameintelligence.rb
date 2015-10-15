@@ -1,13 +1,48 @@
 class GameIntelligence
-	def initialize(rooms, player)
+
+	SAVING_DIVIDER = "|||"
+	MODE_VALID_KEYS = ["HARD", "EASY"]
+	VALID_KEYS = ["N", "S", "E", "W", "P", "D", "SHOW", "SAVE", "LOAD", "EXIT"]
+
+	def initialize(rooms, player, hard_mode = false)
 		@rooms = rooms
 		@lives = 5
 		@player = player
+		@hard_mode = hard_mode
+	end
+
+	def instructions
+		puts "What is your name?"
+		@player.name = gets.chomp.capitalize
+		puts "\nHello #{@player.name}! Please read those instructions: press EXIT to exit, SAVE to save the game, LOAD to load a previous game, press I to pick an item, D to drop an item, N to go North, S to go South, E to go East or W to go West\n"
+		intro
+	end
+
+	def mode_invalid_keys?(user_choice)
+		!MODE_VALID_KEYS.include?(user_choice)
+	end
+
+	def intro
+		load_prompt
+		puts "\nFor the hard mode, press 'HARD', for the easy mode, press 'EASY'\n"
+		user_choice = gets.chomp.upcase
+		while mode_invalid_keys?(user_choice)
+			puts "Ooops.... Please select level hard or easy\n"
+			user_choice = gets.chomp.upcase
+			puts user_choice
+		end
+		if user_choice == 'HARD'
+			@hard_mode = true
+			puts "\nWelcome to the Hard Level\n"
+			core_gameplay(@rooms[0])
+		elsif user_choice == 'EASY'
+			puts "\nWelcome to the Easy Level\n"
+			core_gameplay(@rooms[0])
+		end
 	end
 
 	def invalid_key?(user_choice)
-		valid_keys = ["N", "S", "E", "W", "P", "D", "SHOW"]
-		!valid_keys.include?(user_choice)
+		!VALID_KEYS.include?(user_choice)
 	end
 
 	def loose_life
@@ -18,23 +53,63 @@ class GameIntelligence
 		@lives <= 1
 	end
 
-	def difficulty_select
-		unless @player.hard_mode
-			easy_mode(@rooms[0])
+	def load_prompt
+		puts "Type LOAD to load an existing game. Type any other key to start"
+		user_input = gets.chomp.upcase
+		if user_input == "LOAD"
+			load_game
 		end
-		hard_mode(@rooms[0])
 	end
 
-	def easy_mode(room)
+	def save_game_state(room)
+		current_state = "#{room.hint}#{SAVING_DIVIDER}"
+		if @hard_mode
+			current_state += "hard#{SAVING_DIVIDER}"
+		end
+		if @player.inventory
+			@player.inventory.each do |item|
+				current_state += "#{item}#{SAVING_DIVIDER}"
+			end
+		end
+		File.open("lib/game_saved.txt", "w") do |file|
+			file.write(current_state)
+		end
+		puts "Game successfully saved"
 		core_gameplay(room)
 	end
 
-	def hard_mode(room)
-		core_gameplay(room)
+	def load_game
+		saved_elements = IO.read("lib/game_saved.txt").chomp.split(SAVING_DIVIDER)
+		if saved_elements.length > 0
+			hint = saved_elements[0]
+			saved_elements.shift
+			if saved_elements.include?("hard")
+				@hard_mode = true
+				saved_elements.shift
+			end
+			current_room = @rooms.select do |room|
+				room.hint == hint
+			end
+			puts "Welcome back"
+			if saved_elements
+				restore_inventory(saved_elements)
+			end
+		else
+			puts "Sorry, no games were saved. You start at level One"
+			core_gameplay(@rooms[0])
+		end
+	end
+
+	def restore_inventory(saved_elements)
+		saved_elements.each do |item|
+			@player.inventory.push(item)
+		end
+		puts "Inventory restored"
+		core_gameplay(current_room[0])
 	end
 
 	def preview_room(room)
-		unless @player.hard_mode
+		unless @hard_mode
 			puts "The doors are located #{room.doors.keys}"
 		end
 	end
@@ -85,7 +160,15 @@ class GameIntelligence
 			puts "\nGAAMMMEEE OOOVVVVERRRR!!!!!"
 			exit
 		end
-		if user_choice == 'P'
+		check_next_action(user_choice, room)
+	end
+
+	def check_next_action(user_choice, room)
+		if user_choice == "SAVE"
+			save_game_state(room)
+		elsif user_choice == "EXIT"
+			exit
+		elsif user_choice == 'P'
 			init_pick_item(room)
 		elsif user_choice == 'D'
 			init_drop_item(room)

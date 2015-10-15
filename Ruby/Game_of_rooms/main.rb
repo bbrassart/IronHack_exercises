@@ -3,8 +3,7 @@ require './lib/Room.rb'
 require './lib/Player.rb'
 require 'pry'
 
-player = Player.new
-player.instructions()
+
 
 room1 = Room.new("The first room, the Far West! You should go east...", ["Axe"])
 room2 = Room.new("Land of the Middle, always better to go east unless you wanna go back to the Far West", ["Brush"])
@@ -18,7 +17,7 @@ room3.doors = {:W => room2, :S => room4}
 room4.doors = {:N => room3, :S => room5}
 room5.doors = {:N => room4}
 
-
+player = Player.new
 
 new_game = GameIntelligence.new([room1, room2, room3, room4, room5], player)
-new_game.difficulty_select()
+new_game.instructions
