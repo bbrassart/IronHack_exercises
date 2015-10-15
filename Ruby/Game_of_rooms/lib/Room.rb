@@ -1,10 +1,9 @@
 class Room
-	attr_accessor :hint, :doors, :location, :inventory
+	attr_accessor :hint, :doors, :inventory
 
-	def initialize(hint, doors, location, inventory)
+	def initialize(hint, inventory)
 		@hint = hint
-		@doors = doors
-		@location = location
+		@doors = {}
 		@inventory = inventory
 	end
 end

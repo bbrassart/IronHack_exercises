@@ -35,7 +35,7 @@ class GameIntelligence
 
 	def preview_room(room)
 		unless @player.hard_mode
-			puts "The doors are located #{room.doors}"
+			puts "The doors are located #{room.doors.keys}"
 		end
 	end
 
@@ -73,7 +73,6 @@ class GameIntelligence
 		end
 	end
 
-
 	def core_gameplay(room)
 		preview_room(room)
 		puts room.hint
@@ -87,35 +86,38 @@ class GameIntelligence
 			exit
 		end
 		if user_choice == 'P'
-			unless !room.inventory.empty?
-				puts "There's no nothing to pick here"
-				core_gameplay(room)
-			end
-			pick_item(room.inventory)
-			core_gameplay(room)
+			init_pick_item(room)
 		elsif user_choice == 'D'
-			unless !@player.inventory.empty?
-				puts "Your inventory is currently empty"
-				core_gameplay(room)
-			end
-			drop_item(room.inventory)
-			core_gameplay(room)
+			init_drop_item(room)
 		elsif user_choice == 'SHOW'
-			show_inventory()
+			show_inventory
 			core_gameplay(room)
 		else
 			move_process(room, user_choice)
 		end
 	end
 
+	def init_pick_item(room)
+		unless !room.inventory.empty?
+			puts "There's no nothing to pick here"
+			core_gameplay(room)
+		end
+		pick_item(room.inventory)
+		core_gameplay(room)
+	end
+
+	def init_drop_item(room)
+		unless !@player.inventory.empty?
+			puts "Your inventory is currently empty"
+			core_gameplay(room)
+		end
+		drop_item(room.inventory)
+		core_gameplay(room)
+	end
+
 	def move_process(room, user_choice)
-		if (room.location >= @rooms.count - 1) && (room.doors[0] == user_choice)
-			puts "\nYou just finished the game! Congrats!"
-			exit
-		elsif (room.doors[0] == user_choice)
-				core_gameplay(@rooms[room.location + 1])
-		elsif (room.doors[1] == user_choice)
-			core_gameplay(@rooms[room.location - 1])
+		if next_room = room.doors[user_choice.upcase.to_sym]
+				core_gameplay(next_room)
 		else
 			loose_life
 			puts "\nYo.. You went the wrong way. You still have #{@lives} lives left,. Please try again : "
