@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2>Here are the most commented shows</h2>
+		<ul>
+		<% @most_popular_concerts.each do |concert| %>
+			<div class="media">
+		  		<div class="media-left">
+		    		<a href="<%= concert_path(concert) %>">
+		      			<img class="media-object" src="<%= concert.logo.url(:thumb) %>" class="logo__roundedcorners" alt="Concert logo">
+		    		</a>
+		  		</div>
+		  		<div class="media-body">
+		    		<h4 class="media-heading"><%= concert.band %> in <%= concert.city %></h4>
+		    		<ul>
+			    		<li>Price: <%= concert.price %>€</li>
+						<li><%= link_to "Click to book your ticket", concert_path(concert) %></li>
+					</ul>
+		  		</div>
+			</div>
+		<%end%>
+		</ul>
+	</div>
+</div>

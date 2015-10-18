@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Update this contact</h4>
+			<ul>
+				<%= form_for(@contact) do |f| %>
+				<%= render 'layouts/errors', model: @contact %>
+				<li>
+					<div class="field">
+						<%= f.label :name %>
+						<%=f.text_field :name %>
+					</div>
+				</li>
+
+				<li>
+					<div class="field">
+					<%= f.label :address %>
+					<%=f.text_field :address %>
+					</div>
+				</li>
+				<li>
+					<div class="field">
+					<%= f.label :phone1 %>
+					<%=f.text_field :phone1 %>
+				</div></li>
+
+				<li>
+					<div class="field">
+					<%= f.label :phone2 %>
+					<%=f.text_field :phone2 %>
+					</div>
+				</li>
+
+				<li>
+					<div class="field">
+					<%= f.label :email1 %>
+					<%=f.text_field :email1 %>
+					</div>
+				</li>
+
+				<li>
+					<div class="field">
+					<%= f.label :email2 %>
+					<%=f.text_field :email2 %>
+					</div>
+				</li>
+			<Ul>
+			<ul>
+				<li>
+					<div class="actions btn">
+					<%= f.submit %>
+					</div>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-md-6">
+			<% if @contact.favourite == true %>
+				<ul>
+					<li>
+					<%= form_tag("/contacts/del_favourite", class:"btn") do %>
+					<%= hidden_field_tag(:id, @contact.id) %>
+					<%= submit_tag("Delete favourite") %>
+					<% end %>
+					</li>
+				</ul>
+			<%else %>
+				<ul>
+					<li>
+						<%= form_tag("/contacts/favourite", class:"btn") do %>
+							<%= hidden_field_tag(:id, @contact.id) %>
+							<%= submit_tag("Mark as favourite") %>
+						<%end%>
+					</li>
+				</ul>
+			<%end%>
+		</div>
+	</div>
+</div>

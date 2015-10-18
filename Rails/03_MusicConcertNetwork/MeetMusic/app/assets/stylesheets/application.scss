@@ -1,0 +1,46 @@
+@import "bootstrap";
+@import "bootstrap-sprockets";
+
+
+body {
+	background-image: url('http://i.imgur.com/jc31OXc.png');
+}
+
+.jumbotron {
+	padding-left: 25%;
+	background-image: url('http://i.imgur.com/jc31OXc.png');
+}
+
+ul {
+	list-style: none;
+	padding: 10px;
+}
+
+img {
+	padding: 10px 0;
+}
+
+.col-md-3 {
+	border-right: 1px solid black;
+}
+
+.col-md-9 {
+	padding-left: 40px;
+}
+
+.col-md-8 {
+	padding-left: 40px;
+	padding-top: 10px;
+}
+
+.media-object {
+  border-radius: 50%;
+}
+
+
+footer {
+	padding-top: 20px;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}

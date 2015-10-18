@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ul>
+				<% if @contacts.present? %>
+				<h3>The favourite contacts you have are:</h3>
+					<% @contacts.each do |contact| %>
+						<div class="media">
+			  				<div class="media-left">
+			    				<a href="#" class="pull-left">
+			      					<img class="media-object" src="http://38.media.tumblr.com/avatar_f721923ca467_64.png" alt="ProfilePic">
+			    				</a>
+			  				</div>
+			  				<div class="media-body">
+			    				<h4 class="media-heading"><%= contact.name %> lives in <%= contact.address %></h4>
+			 					Contact information:
+			 					</br>
+			 					<span class="glyphicon glyphicon-earphone"></span>
+								<%= contact.phone1 %>
+								<%if contact.phone2.present?%>
+									or
+									<%= contact.phone2 %>
+								<%end%>
+								</br>
+								<span class="glyphicon glyphicon-envelope"></span>
+								<%= contact.email1 %>
+								<%if contact.email2.present?%>
+									or
+									<%= contact.email2 %>
+								<%end%>
+			  				</div>
+						</div>
+					<%end%>
+				<% else %>
+					<h3>Sorry, you couldn't find any contact for this letter.</h3>
+				<% end %>
+			</ul>
+
+<ul>
+<% @contacts.each do |contact| %>
+<li> <%= contact.name %>
+</li>
+<% end %>

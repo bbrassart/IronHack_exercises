@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Here are all the details about this gig </h1>
+	</div>
+	<div class="col-md-4">
+		<ul>
+			<li><%= image_tag @concert.logo.url(:medium)%></li>
+			<li><%= link_to "Edit this concert", edit_concert_path  %></li> 
+			<li><%= link_to 'Delete this concert', concert_path(@concert), method: :delete %></li>
+			<li><h4>Leave a comment</h4></li>
+			<%= form_for( :comment) do |f| %>
+
+			<li><div class="field">
+				<%= f.label :message %>
+				<%=f.text_field :message %>
+				</div>
+			</li>
+				
+			<li><div class="actions">
+				<%= f.submit %>
+				</div>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="col-md-8">
+		<ul>
+			<li><b><%= @concert.band %></b> will be playing at</li>
+			<li><%= @concert.venue %> in <%= @concert.city %> the <%= @concert.date %></li>
+		</ul>
+		<ul>
+			<li><b>More info about this gig:</b></li>
+			<li><%= @concert.description %></li>
+		</ul>
+		<ul>
+		<li><h3>What the users think of it...</h3></li>
+		</ul>
+		<ul>
+			<% if @concert.comments.present? %>
+				<% @concert.comments.each do |comment| %>
+					<li><b><%= comment.visitor %></b> said:</li>
+					<li><%= comment.message %></li>
+					<li><%= link_to "Delete this comment", [@concert, comment], method: :delete %></li>
+					<br>
+					<%end%>
+				<% else %> 
+				<li>Sorry, nobody left a comment yet...</li>
+			<%end%>
+		</ul>
+	</div>
+</div>

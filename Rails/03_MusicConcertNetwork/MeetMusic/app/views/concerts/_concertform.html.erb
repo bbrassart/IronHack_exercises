@@ -1,0 +1,50 @@
+<%= form_for concert, :html => {:multipart => true }  do |f| %>
+
+	<%= f.label :logo %>
+	<%= f.file_field :logo %>
+<br>
+	<%= render 'layouts/errors', model: @concert %>
+		<br>
+
+	<div class="field">
+		<%= f.label :band %>
+
+		<br />
+		<%=f.text_field :band %>
+	</div>
+<br>
+	<div class="field">
+		<%= f.label :venue %>
+		<br />
+		<%=f.text_field :venue %>
+	</div>
+<br>
+	<div class="field">
+		<%= f.label :city %>
+		<br />
+		<%=f.text_field :city %>
+	</div>
+<br>
+	<div class="field">
+		<%= f.label :date%>
+		<br />
+		<%=f.date_select :date %>
+	</div>
+<br>
+	<div class="field">
+		<%= f.label :price %>
+		<br />
+		<%=f.text_field :price %>
+	</div>
+<br>
+	<div class="field">
+		<%= f.label :description %>
+		<br />
+		<%=f.text_field :description %>
+	</div>
+<br>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+<br>

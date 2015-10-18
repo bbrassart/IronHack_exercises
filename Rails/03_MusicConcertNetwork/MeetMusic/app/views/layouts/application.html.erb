@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <img class="jumbotron" src="http://i.imgur.com/l9g32q6.png">
+  <title>MeetMusic</title>
+ 
+  
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+	<% if current_user.nil? %>
+	<h3>Hello visitor!</h3>
+		<%= link_to "Log in", '/login' %>
+	<%else%> 
+		<h3>Hello <%= current_user.name%> !</h3>
+		<%= link_to "Log out", '/logout' %>
+	<%end%>
+
+		<% flash.each do |key, value| %>
+			<%= content_tag :div, value, class: "flash-info" %>
+			<% end %>
+
+		<%= yield %>
+		<footer>
+			<ul>
+				<li><%= link_to "All the gigs at your fingertips", concerts_path %> </li>
+				<li>Powered by Rails <a href="http://bbrassart.com">@bbrassart</a> </li>
+			</ul>
+		</footer>
+		
+		</div>
+	</body>
+</html>
+

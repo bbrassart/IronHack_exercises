@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-md-3">
+		<h2>Today's menu!!</h2>
+		<ul>
+		<% @today_concerts.each do |concert| %>
+			<div class="media">
+		  		<div class="media-left">
+		    		<a href="<%= concert_path(concert) %>">
+		      			<img class="media-object" src="<%= concert.logo.url(:thumb) %>" class="logo__roundedcorners" alt="Concert logo">
+		    		</a>
+		  		</div>
+		  		<div class="media-body">
+		    		<h4 class="media-heading"><%= concert.band %> in <%= concert.city %></h4>
+		    		<ul>
+			    		<li>Price: <%= concert.price %>€</li>
+						<li><%= link_to "Click to book your ticket", concert_path(concert) %></li>
+					</ul>
+		  		</div>
+			</div>
+		<%end%>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<h2>Later this month!!</h2>
+		<ul>
+		<% @month_concerts.each do |concert| %>
+			<div class="media">
+		  		<div class="media-left">
+		    		<a href="<%= concert_path(concert) %>">
+		      			<img class="media-object" src="<%= concert.logo.url(:thumb) %>" class="logo__roundedcorners" alt="Concert logo">
+		    		</a>
+		  		</div>
+		  		<div class="media-body">
+		    	<h4 class="media-heading"><%= concert.band %> in <%= concert.city %> at the <%= concert.venue %></h4>
+		    	<ul>
+			   		<li>Price: <%= concert.price %>€</li>
+					<li>More info about this gig: </li>
+					<li><%= concert.description %></li>
+					<li><%= link_to "Click to book your ticket", concert_path(concert) %></li>
+				</ul>
+		  	</div>
+		</div>
+	<%end%>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h3><%= link_to "Submit your own Gig here", new_concert_path %>
+		</h3>
+		<h3><%= link_to "Check your most popular concerts", concerts_mostpopular_path %>
+		</h3>
+		<% if !@concerts.present? %>
+			Currently, there are no concerts waiting for you.
+			Sorry about that!
+			Come back later!
+		<%end%>
+
+		<ul>
+			<h4>All upcoming concerts. Click on one to see more details.</h4>
+			<% @concerts.each do |concert| %>
+			<li><%= link_to concert.band, concert_path(concert) %></li>
+			<% end %> 
+		</ul>
+	</div>
+</div>

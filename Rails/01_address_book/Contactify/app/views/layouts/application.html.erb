@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contactify</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<% flash.each do |key, value| %>
+		<%= content_tag :div, value, class: "flash-info" %>
+		<% end %>
+
+	<div class="page-header">
+  		<h1>Contactify <small>All your contacts in one place</small></h1>
+	</div>
+	<%= yield %>
+	<footer>
+		<ul>
+			<li><%= link_to "All your contacts", contacts_path %> </li>
+			<li>Powered by Ruby on Rails <a href="http://bbrassart.com/">@bbrassart</a></li>
+		</ul>
+	</footer>
+</body>
+</html>
