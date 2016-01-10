@@ -14,7 +14,6 @@ JoinBarbecue.prototype.setInitialListeners = function() {
 
 JoinBarbecue.prototype.joinBarbecue = function() {
   var bbqId = $(event.target).closest('[data-id]').data('id');
-  debugger;
   var my_data = {id: bbqId};
   var request = $.post(this.url, my_data);
   request.done(function(data) {
